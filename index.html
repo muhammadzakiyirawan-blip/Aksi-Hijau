@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksi Hijau - Satu Langkah Kecilmu, Perubahan Besar untuk Bumi</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2D6A4F;
+            --light-green: #52B788;
+            --cream-bg: #F8F4E3;
+            --earth-brown: #6B4226;
+            --accent-yellow: #F4A261;
+            --dark-green: #1B4332;
+            --pale-green: #D8F3DC;
+            --text-dark: #2D312E;
+            --text-light: #5A605C;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-green);
+        }
+
+        /* Reusable UI Components */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            border: 2px solid transparent;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(45, 106, 79, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27, 67, 50, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-yellow);
+            color: var(--dark-green);
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(244, 162, 97, 0.3);
+        }
+
+        .btn-accent:hover {
+            background-color: #e7914f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.4);
+        }
+
+        /* Navigation Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            padding: 20px 0;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid rgba(82, 183, 136, 0.1);
+        }
+
+        header.scrolled .nav-logo {
+            color: var(--dark-green);
+        }
+
+        header.scrolled .nav-link {
+            color: var(--text-dark);
+        }
+
+        header.scrolled .nav-link:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--light-green);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--light-green);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--white);
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled .menu-toggle span {
+            background-color: var(--dark-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: radial-gradient(circle at 15% 25%, rgba(82, 183, 136, 0.2) 0%, transparent 45%),
+                        radial-gradient(circle at 85% 75%, rgba(45, 106, 79, 0.15) 0%, transparent 45%),
+                        linear-gradient(135deg, var(--dark-green) 0%, #0d281e 100%);
+            padding: 180px 0 120px;
+            color: var(--white);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Custom Leaf Pattern Overlay using clean CSS/SVG background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0C30 20 20 30 0 40C20 50 30 60 40 80C50 60 60 50 80 40C60 30 50 20 40 0Z' fill='%2352b788' fill-opacity='0.03'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--cream-bg);
+            padding: 80px 0;
+            position: relative;
+            z-index: 20;
+            margin-top: -40px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-card {
+            background-color: var(--white);
+            padding: 32px 24px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(82, 183, 136, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--light-green);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark-green);
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Active Campaigns Section */
+        .campaigns {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .campaign-card {
+            background-color: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(82, 183, 136, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .campaign-image {
+            height: 220px;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Decorative Leaf inside campaign image placeholder */
+        .campaign-image::after {
+            content: '🌿';
+            font-size: 5rem;
+            opacity: 0.15;
+            transform: rotate(-15deg);
+        }
+
+        .campaign-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--white);
+            color: var(--dark-green);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+            z-index: 5;
+        }
+
+        .campaign-card:nth-child(2) .campaign-image {
+            background: linear-gradient(135deg, var(--earth-brown) 0%, var(--accent-yellow) 100%);
+        }
+
+        .campaign-card:nth-child(2) .campaign-image::after {
+            content: '♻️';
+        }
+
+        .campaign-card:nth-child(3) .campaign-image {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--accent-yellow) 100%);
+        }
+
+        .campaign-card:nth-child(3) .campaign-image::after {
+            content: '📚';
+        }
+
+        .campaign-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .campaign-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .campaign-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .progress-label {
+            color: var(--text-light);
+        }
+
+        .progress-percentage {
+            color: var(--primary-green);
+        }
+
+        .progress-track {
+            height: 10px;
+            background-color: var(--cream-bg);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+            border-radius: 5px;
+            width: 0%; /* Animated via JS */
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        .campaign-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+            margin-bottom: 24px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .campaign-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--pale-green);
+            color: var(--primary-green);
+            text-align: center;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .campaign-btn:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* How to Donate Section */
+        .how-it-works {
+            background-color: var(--cream-bg);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            flex: 1;
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Education Section */
+        .education {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .edu-card {
+            background-color: var(--white);
+            border-radius: 24px;
+            border: 1px solid rgba(82, 183, 136, 0.1);
+            padding: 32px;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--light-green);
+        }
+
+        .edu-tag {
+            align-self: flex-start;
+            background-color: var(--pale-green);
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .edu-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .edu-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .edu-excerpt {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .edu-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .edu-link:hover {
+            color: var(--dark-green);
+            gap: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+            padding: 100px 0;
+            color: var(--white);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '“';
+            position: absolute;
+            font-size: 20rem;
+            font-family: 'Playfair Display', serif;
+            top: 20px;
+            right: 10%;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--white);
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testi-card {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testi-quote {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .avatar-initial {
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-yellow);
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .testi-card:nth-child(2) .avatar-initial {
+            background-color: var(--light-green);
+            color: var(--white);
+        }
+
+        .author-info h4 {
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .author-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        /* Form Donasi Cepat Section */
+        .donation-form-section {
+            padding: 100px 0;
+            background-color: var(--cream-bg);
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 32px;
+            padding: 48px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--dark-green);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e1e8e4;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            background-color: #fcfdfc;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-green);
+            background-color: var(--white);
+            box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.15);
+        }
+
+        /* Preset Nominal Button Grid */
+        .amount-presets {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .amount-btn {
+            background-color: #f0f5f2;
+            border: 2px solid transparent;
+            color: var(--primary-green);
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+        }
+
+        .amount-btn:hover {
+            background-color: var(--pale-green);
+        }
+
+        .amount-btn.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 10px rgba(45, 106, 79, 0.2);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        /* Success Message Container */
+        .success-box {
+            display: none;
+            background-color: var(--pale-green);
+            border: 2px solid var(--primary-green);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            color: var(--dark-green);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+
+        .success-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .success-box p {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--light-green), var(--accent-yellow));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo-col p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            max-width: 320px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-green);
+            padding-left: 6px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .social-btn:hover {
+            background-color: var(--light-green);
+            transform: scale(1.1);
+        }
+
+        .bank-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bank-info h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bank-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .campaign-grid, .edu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                background-color: var(--dark-green);
+                padding: 14px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 72px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 72px);
+                background-color: var(--dark-green);
+                flex-direction: column;
+                padding: 40px;
+                gap: 24px;
+                transition: var(--transition-smooth);
+                align-items: flex-start;
+                z-index: 999;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                display: none; /* Handled in dynamic overlay if needed or simplified */
+            }
+
+            .hero {
+                padding: 140px 0 80px;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .campaign-grid, .edu-grid, .testi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .amount-presets {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation / Navbar -->
+    <header id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="nav-logo">
+                <span>🌿</span> Aksi Hijau
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Beranda</a></li>
+                <li><a href="#campaign" class="nav-link">Kampanye</a></li>
+                <li><a href="#education" class="nav-link">Edukasi</a></li>
+                <li><a href="#about" class="nav-link">Tentang Kami</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="#donate-form" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">Donasi Sekarang</a>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tanam Harapan, Jaga Pesisir Kita</h1>
+                <p>Satu langkah kecilmu hari ini adalah nafas kehidupan bagi bumi esok hari. Bersama komunitas pemuda Tangerang Selatan, kita wujudkan aksi nyata.</p>
+                <div class="hero-ctas">
+                    <a href="#donate-form" class="btn btn-accent">Mulai Donasi</a>
+                    <a href="#campaign" class="btn btn-outline">Lihat Kampanye</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">🌱</span>
+                    <div class="stat-number" data-target="12450">0</div>
+                    <div class="stat-label">Pohon Ditanam</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-number" data-target="3820">0</div>
+                    <div class="stat-label">Donatur Bergabung</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📍</span>
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">Lokasi Aktif</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💰</span>
+                    <div class="stat-number" data-target="487">Rp 0 jt</div>
+                    <div class="stat-label">Juta Terkumpul</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Campaigns Section -->
+    <section class="campaigns" id="campaign">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Crowdfunding Lingkungan</span>
+                <h2>Kampanye yang Butuh Dukunganmu</h2>
+                <p>Donasi Anda disalurkan secara transparan untuk proyek pelestarian alam demi kehidupan Tangerang Selatan yang lestari.</p>
+            </div>
+
+            <div class="campaign-grid">
+                <!-- Kampanye 1 -->
+                <div class="campaign-card">
+                    <div class="campaign-image">
+                        <span class="campaign-badge">🔥 Trending</span>
+                    </div>
+                    <div class="campaign-body">
+                        <h3 class="campaign-title">1000 Mangrove untuk Pesisir Dadap</h3>
+                        <p class="campaign-desc">Menanam 1000 bibit mangrove di kawasan pesisir Dadap yang terancam abrasi laut ekstrem.</p>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Terkumpul</span>
+                                <span class="progress-percentage">75%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" data-progress="75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="campaign-meta">
+                            <div class="meta-item">
+                                <span class="meta-value">Rp 18.750k</span>
+                                <span class="meta-label">Terkumpul</span>
+                            </div>
+                            <div class="meta-item" style="text-align: right;">
+                                <span class="meta-value">12 Hari</span>
+                                <span class="meta-label">Sisa Waktu</span>
+                            </div>
+                        </div>
+
+                        <a href="#donate-form" class="campaign-btn select-campaign-btn" data-campaign="1000 Mangrove untuk Pesisir Dadap">Dukung Kampanye Ini</a>
+                    </div>
+                </div>
+
+                <!-- Kampanye 2 -->
+                <div class="campaign-card">
+                    <div class="campaign-image">
+                        <span class="campaign-badge">🆕 Baru</span>
+                    </div>
+                    <div class="campaign-body">
+                        <h3 class="campaign-title">Bank Sampah Digital Ciputat</h3>
+                        <p class="campaign-desc">Membangun sistem bank sampah digital berbasis aplikasi untuk mengelola sampah rumah tangga warga Ciputat.</p>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Terkumpul</span>
+                                <span class="progress-percentage">40%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" data-progress="40%"></div>
+                            </div>
+                        </div>
+
+                        <div class="campaign-meta">
+                            <div class="meta-item">
+                                <span class="meta-value">Rp 6.000k</span>
+                                <span class="meta-label">Terkumpul</span>
+                            </div>
+                            <div class="meta-item" style="text-align: right;">
+                                <span class="meta-value">28 Hari</span>
+                                <span class="meta-label">Sisa Waktu</span>
+                            </div>
+                        </div>
+
+                        <a href="#donate-form" class="campaign-btn select-campaign-btn" data-campaign="Bank Sampah Digital Ciputat">Dukung Kampanye Ini</a>
+                    </div>
+                </div>
+
+                <!-- Kampanye 3 -->
+                <div class="campaign-card">
+                    <div class="campaign-image">
+                        <span class="campaign-badge">⚡ Hampir Tercapai</span>
+                    </div>
+                    <div class="campaign-body">
+                        <h3 class="campaign-title">Edukasi Pilah Sampah SD Serpong</h3>
+                        <p class="campaign-desc">Program edukasi pemilahan sampah organik & anorganik interaktif untuk 500 siswa sekolah dasar di Serpong.</p>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Terkumpul</span>
+                                <span class="progress-percentage">95%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" data-progress="95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="campaign-meta">
+                            <div class="meta-item">
+                                <span class="meta-value">Rp 7.600k</span>
+                                <span class="meta-label">Terkumpul</span>
+                            </div>
+                            <div class="meta-item" style="text-align: right;">
+                                <span class="meta-value">3 Hari</span>
+                                <span class="meta-label">Sisa Waktu</span>
+                            </div>
+                        </div>
+
+                        <a href="#donate-form" class="campaign-btn select-campaign-btn" data-campaign="Edukasi Pilah Sampah SD Serpong">Dukung Kampanye Ini</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Donate Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Langkah Mudah</span>
+                <h2>Bagaimana Cara Berdonasi?</h2>
+                <p>Partisipasi Anda sangat berharga bagi masa depan lingkungan kita. Ikuti tiga langkah ringkas berikut.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <span class="step-emoji">1️⃣</span>
+                    <h3>Pilih Kampanye</h3>
+                    <p>Temukan program pelestarian atau edukasi hijau di Tangerang Selatan yang ingin Anda dukung.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">2️⃣</span>
+                    <h3>Tentukan Nominal</h3>
+                    <p>Pilih salah satu nominal instan yang tersedia atau tentukan nominal khusus sesuai kerelaan Anda.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">3️⃣</span>
+                    <h3>Konfirmasi & Bayar</h3>
+                    <p>Isi data diri Anda, selesaikan transaksi, dan pantau perkembangan proyek secara transparan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Edukasi Hijau</span>
+                <h2>Belajar Bareng Aksi Hijau</h2>
+                <p>Menambah pengetahuan tentang bumi kita, mulai dari tips ramah lingkungan sederhana hingga isu krusial di sekitar kita.</p>
+            </div>
+
+            <div class="edu-grid">
+                <!-- Artikel 1 -->
+                <div class="edu-card">
+                    <div class="edu-tag">Lingkungan</div>
+                    <div class="edu-emoji">🌳</div>
+                    <h3 class="edu-title">Mengapa Mangrove Penting untuk Kita?</h3>
+                    <p class="edu-excerpt">Hutan mangrove adalah pelindung alami pesisir dari abrasi kuat. Akarnya menjadi tempat berlindung biota laut dan penahan karbon dunia.</p>
+                    <a href="#" class="edu-link" onclick="event.preventDefault();">Baca Selengkapnya ➔</a>
+                </div>
+
+                <!-- Artikel 2 -->
+                <div class="edu-card">
+                    <div class="edu-tag">Gaya Hidup</div>
+                    <div class="edu-emoji">♻️</div>
+                    <h3 class="edu-title">5 Cara Mudah Memilah Sampah di Rumah</h3>
+                    <p class="edu-excerpt">Memilah sampah sejak dari sumbernya sangat mempermudah proses daur ulang. Simak panduan praktis memilah sampah organik dan anorganik.</p>
+                    <a href="#" class="edu-link" onclick="event.preventDefault();">Baca Selengkapnya ➔</a>
+                </div>
+
+                <!-- Artikel 3 -->
+                <div class="edu-card">
+                    <div class="edu-tag">Edukasi</div>
+                    <div class="edu-emoji">🌊</div>
+                    <h3 class="edu-title">Abrasi Pantai: Ancaman Nyata Pesisir Tangerang</h3>
+                    <p class="edu-excerpt">Pesisir utara Tangerang menghadapi tantangan erosi tanah akibat ombak besar. Kampanye penanaman pohon menjadi pertahanan terakhir kita.</p>
+                    <a href="#" class="edu-link" onclick="event.preventDefault();">Baca Selengkapnya ➔</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="color: var(--accent-yellow);">Impact Stories</span>
+                <h2>Suara Pejuang Hijau</h2>
+                <p>Mereka yang telah melangkah bersama kita untuk mengukir sejarah pelestarian lingkungan.</p>
+            </div>
+
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <p class="testi-quote">"Bangga bisa ikut menanam 10 bibit mangrove langsung dari kamar kos saya di Pamulang! Prosesnya sangat mudah dan laporannya real-time."</p>
+                    <div class="testi-author">
+                        <div class="avatar-initial">RA</div>
+                        <div class="author-info">
+                            <h4>Rafi A.</h4>
+                            <p>Mahasiswa, Pamulang</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testi-card">
+                    <p class="testi-quote">"Transparansi laporannya bikin saya percaya untuk terus donasi setiap bulan. Senang melihat aksi anak-anak muda Tangsel yang konkret."</p>
+                    <div class="testi-author">
+                        <div class="avatar-initial">SN</div>
+                        <div class="author-info">
+                            <h4>Siti N.</h4>
+                            <p>Ibu Rumah Tangga, Ciputat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Form Section -->
+    <section class="donation-form-section" id="donate-form">
+        <div class="container">
+            <div class="form-container">
+                <div id="form-inner-container">
+                    <div class="form-header">
+                        <h2>Mulai Donasimu Sekarang</h2>
+                        <p>Mari jadikan Tangerang Selatan kawasan yang lebih hijau, asri, dan lestari.</p>
+                    </div>
+
+                    <form id="donation-form" novalidate>
+                        <div class="form-group">
+                            <label class="form-label" for="fullname">Nama Lengkap</label>
+                            <input class="form-input" type="text" id="fullname" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Alamat Email</label>
+                            <input class="form-input" type="email" id="email" placeholder="contoh@domain.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="campaign-select">Pilih Kampanye Lingkungan</label>
+                            <select class="form-input" id="campaign-select" required>
+                                <option value="" disabled selected>-- Pilih Proyek Penyelamatan --</option>
+                                <option value="1000 Mangrove untuk Pesisir Dadap">1000 Mangrove untuk Pesisir Dadap</option>
+                                <option value="Bank Sampah Digital Ciputat">Bank Sampah Digital Ciputat</option>
+                                <option value="Edukasi Pilah Sampah SD Serpong">Edukasi Pilah Sampah SD Serpong</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nominal Donasi (Rupiah)</label>
+                            <div class="amount-presets">
+                                <button type="button" class="amount-btn" data-val="25000">25.000</button>
+                                <button type="button" class="amount-btn" data-val="50000">50.000</button>
+                                <button type="button" class="amount-btn" data-val="100000">100.000</button>
+                                <button type="button" class="amount-btn" data-val="250000">250.000</button>
+                            </div>
+                            <input class="form-input" type="number" id="custom-amount" placeholder="Atau ketik nominal lainnya (Min. Rp 10.000)" min="10000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Pesan / Doa Terbaik (Opsional)</label>
+                            <textarea class="form-input" id="message" rows="3" placeholder="Tulis doa atau dukungan untuk relawan di lapangan..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary form-submit-btn">Lanjutkan Donasi ➔</button>
+                    </form>
+                </div>
+
+                <!-- Succes state markup -->
+                <div class="success-box" id="success-message">
+                    <div class="success-emoji">✅</div>
+                    <h3>Donasi Berhasil Diterima!</h3>
+                    <p id="success-text">Terima kasih banyak, [Nama]! Donasimu sedang diproses. Silakan cek email kamu untuk konfirmasi lengkap.</p>
+                    <button type="button" class="btn btn-primary" id="btn-reset-form" style="margin-top: 24px;">Donasi Lagi</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-logo-col">
+                    <a href="#home" class="nav-logo" style="color: var(--white);">
+                        <span>🌿</span> Aksi Hijau
+                    </a>
+                    <p>"Satu Langkah Kecilmu, Perubahan Besar untuk Bumi." Platform crowdfunding lingkungan hidup milik generasi muda Tangerang Selatan.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" onclick="event.preventDefault();">📷</a>
+                        <a href="#" class="social-btn" onclick="event.preventDefault();">🐦</a>
+                        <a href="#" class="social-btn" onclick="event.preventDefault();">🎥</a>
+                        <a href="#" class="social-btn" onclick="event.preventDefault();">🎵</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kampanye Aktif</h4>
+                    <ul class="footer-links">
+                        <li><a href="#campaign">Penyelamatan Mangrove</a></li>
+                        <li><a href="#campaign">Bank Sampah Ciputat</a></li>
+                        <li><a href="#campaign">Edukasi SD Serpong</a></li>
+                        <li><a href="#campaign">Daftar Relawan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Edukasi & Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="#education">Hutan Mangrove</a></li>
+                        <li><a href="#education">Pilahan Sampah</a></li>
+                        <li><a href="#education">Dampak Abrasi</a></li>
+                        <li><a href="#education">Gaya Hidup Hijau</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Tentang & Kontak</h4>
+                    <div class="bank-info">
+                        <h5>Rekening Donasi</h5>
+                        <p>Bank BCA</p>
+                        <p style="font-weight: bold; font-size: 1.1rem; color: var(--white); margin: 4px 0;">1234567890</p>
+                        <p>a.n. Yayasan Generasi Hijau</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2025 Aksi Hijau — Generasi Hijau Tangerang Selatan</div>
+                <div>Dirancang dengan kepedulian tinggi terhadap kelestarian lingkungan</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const navbar = document.getElementById('navbar');
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const selectCampaignBtns = document.querySelectorAll('.select-campaign-btn');
+        const campaignSelect = document.getElementById('campaign-select');
+
+        // 1. Sticky Navbar
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle Mobile Menu
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Hamburger icon animation effect
+            const spans = menuToggle.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+
+        // Campaign Quick Selection Connector
+        selectCampaignBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const targetCampaign = btn.getAttribute('data-campaign');
+                campaignSelect.value = targetCampaign;
+            });
+        });
+
+        // 2. Animated Counter on scroll using Intersection Observer
+        const counterElements = document.querySelectorAll('.stat-number');
+        
+        const countUp = (element) => {
+            const target = parseInt(element.getAttribute('data-target'), 10);
+            const isMoney = element.innerText.includes('Rp') || target === 487;
+            let current = 0;
+            const duration = 2000; // 2 seconds
+            const stepTime = Math.max(Math.floor(duration / target), 15);
+            
+            const timer = setInterval(() => {
+                if (target < 50) {
+                    current += 1;
+                } else {
+                    current += Math.ceil(target / 100);
+                }
+
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                // Format display numbers
+                if (isMoney) {
+                    element.innerText = `Rp ${current.toLocaleString('id-ID')} Juta`;
+                } else {
+                    element.innerText = current.toLocaleString('id-ID');
+                }
+            }, stepTime);
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counterElements.forEach(el => counterObserver.observe(el));
+
+        // 3. Trigger Progress Bar Animation
+        const progressBarElements = document.querySelectorAll('.progress-bar');
+        
+        const animateProgressBars = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const progress = bar.getAttribute('data-progress');
+                    bar.style.width = progress;
+                    observer.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        progressBarElements.forEach(bar => animateProgressBars.observe(bar));
+
+        // 4. Form amount presets
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const customAmountInput = document.getElementById('custom-amount');
+
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Clear active states
+                amountBtns.forEach(b => b.classList.remove('active'));
+                
+                // Set active
+                btn.classList.add('active');
+                
+                // Put value in manual input
+                customAmountInput.value = btn.getAttribute('data-val');
+            });
+        });
+
+        // Clear active buttons if user types manually
+        customAmountInput.addEventListener('input', () => {
+            amountBtns.forEach(b => b.classList.remove('active'));
+        });
+
+        // 5. Form Validation & Success Handling
+        const donationForm = document.getElementById('donation-form');
+        const formInnerContainer = document.getElementById('form-inner-container');
+        const successMessage = document.getElementById('success-message');
+        const successText = document.getElementById('success-text');
+        const btnResetForm = document.getElementById('btn-reset-form');
+
+        donationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const selectedProj = campaignSelect.value;
+            const amountVal = parseFloat(customAmountInput.value);
+
+            // Validations
+            if (!fullname) {
+                alertBox("Silakan masukkan nama lengkap Anda.");
+                return;
+            }
+
+            if (!email || !validateEmail(email)) {
+                alertBox("Silakan masukkan alamat email yang valid.");
+                return;
+            }
+
+            if (!selectedProj) {
+                alertBox("Silakan pilih salah satu kampanye lingkungan hidup.");
+                return;
+            }
+
+            if (isNaN(amountVal) || amountVal < 10000) {
+                alertBox("Jumlah donasi minimal adalah Rp 10.000.");
+                return;
+            }
+
+            // Show success display
+            successText.innerHTML = `Terima kasih banyak, <strong>${fullname}</strong>! Donasi Anda sebesar <strong>Rp ${amountVal.toLocaleString('id-ID')}</strong> untuk proyek <strong>"${selectedProj}"</strong> sedang kami proses.<br><br>Instruksi pembayaran dan verifikasi kontribusi telah dikirimkan ke <strong>${email}</strong>.`;
+            
+            formInnerContainer.style.display = 'none';
+            successMessage.style.display = 'block';
+        });
+
+        // Reset Form Action
+        btnResetForm.addEventListener('click', () => {
+            donationForm.reset();
+            amountBtns.forEach(b => b.classList.remove('active'));
+            successMessage.style.display = 'none';
+            formInnerContainer.style.display = 'block';
+        });
+
+        // Helper functions
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-8]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function alertBox(message) {
+            // Elegant replacement for window.alert()
+            const alertDiv = document.createElement('div');
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.bottom = '24px';
+            alertDiv.style.right = '24px';
+            alertDiv.style.backgroundColor = 'var(--earth-brown)';
+            alertDiv.style.color = 'var(--cream-bg)';
+            alertDiv.style.padding = '16px 24px';
+            alertDiv.style.borderRadius = '12px';
+            alertDiv.style.boxShadow = 'var(--shadow-lg)';
+            alertDiv.style.zIndex = '9999';
+            alertDiv.style.fontWeight = '600';
+            alertDiv.style.fontSize = '0.95rem';
+            alertDiv.style.transition = 'opacity 0.4s ease';
+            alertDiv.innerHTML = `⚠️ ${message}`;
+            
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                alertDiv.style.opacity = '0';
+                setTimeout(() => alertDiv.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
